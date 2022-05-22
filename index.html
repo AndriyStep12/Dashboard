@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PELIO Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="LOGO_Dash.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 15px;
+
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #F5F5F5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #0E6EFF;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-family: 'DM Sans', sans-serif;
+            margin-left: 10px;
+            font-size: 35px;
+            margin-right: 50px;
+        }
+
+        body {
+            background-color: #F5F5F5;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .left-side {
+            width: 25%;
+            height: 200vh;
+            background-color: #fff;
+            display: flex;
+            /*            justify-content: center;*/
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .h_leftMain {
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 54px;
+            /* identical to box height */
+
+            text-align: center;
+
+            color: #0E6EFF;
+        }
+
+        .startLeft img {
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+
+        .startLeft {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding-top: 30px;
+            margin-right: 110px;
+        }
+
+        .button {
+            width: 85%;
+            height: 8vh;
+            color: #72757A;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            /*            justify-content: center;*/
+            align-items: center;
+            flex-direction: row;
+            margin-left: 35px;
+        }
+
+        .button img {
+            height: 20px;
+            margin-bottom: 2px;
+            margin-right: 10px;
+        }
+
+        .buts {
+            margin-top: 30px;
+        }
+
+
+
+
+        #button_Dasboard {
+            background-color: #0E6EFF;
+            color: #fff;
+        }
+
+        .block {
+            width: 9px;
+            height: 9px;
+            background-color: #000;
+            margin: 4px;
+            border-radius: 2px;
+        }
+
+        .blocks {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .up,
+        .down {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .first_startBlock {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 30%;
+        }
+
+        .right-side {
+            padding: 30px;
+            width: 75%;
+        }
+
+        .start_block {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 10vh;
+            padding: 30px;
+        }
+
+        input {
+            border: none;
+            width: 100%;
+            height: 45px;
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 5px;
+        }
+
+        .end_block img {
+            height: 50px;
+        }
+
+        .end_block {
+            display: flex;
+            flex-direction: row;
+            margin-left: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img_IMG {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Man_silhouette.svg/1200px-Man_silhouette.svg.png);
+            background-size: cover;
+            border-radius: 10px;
+            margin-left: 30px;
+        }
+
+        .text {
+            margin-left: 20px;
+        }
+
+        .box_Person {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        #mail {
+            height: 60px;
+        }
+
+        .blockRight {
+            height: 120px;
+            width: 100%;
+            border-radius: 20px;
+            background-color: #03B664;
+            margin: 10px;
+        }
+
+        .block_centerRight {
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+        }
+
+        #blue {
+            background-color: #01BEFF;
+        }
+
+        #yellow {
+            background-color: #FFBF26;
+        }
+
+        #red {
+            background-color: #FF684D;
+        }
+
+        .block_cenHar_one {
+            height: 400px;
+            width: 70%;
+            border-radius: 20px;
+            margin: 0 10px;
+            background-color: #fff;
+        }
+
+        .block_cenHar_two {
+            height: 400px;
+            width: 40%;
+            margin-left: 200px;
+            border-radius: 20px;
+            background-color: #fff;
+            margin: 0 10px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .block_centerHard {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            /*            justify-content: center;*/
+            margin-top: 30px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .fix {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+        }
+
+        #firstBlock {
+            width: 1px;
+            height: 1px;
+        }
+
+        .bl_Th-on_ONE {
+            width: 100%;
+            height: 301px;
+            border-radius: 20px;
+            margin: 0 10px;
+            background: linear-gradient(247.35deg, rgb(147, 109, 255) 0%, rgb(62, 209, 255) 100%);
+            outline: none;
+        }
+
+        .block_cenHar-Three_one,
+        .block_cenHar-Three_two {
+            width: 50%;
+        }
+
+        .bl_Th-on_TWO {
+            width: 100%;
+            height: 130px;
+            border-radius: 20px;
+            margin: 0 10px;
+            background-color: #fff;
+            margin-top: 30px;
+        }
+
+        .bl_Th-tw {
+            width: 100%;
+            height: 461px;
+            border-radius: 20px;
+            margin: 0 10px;
+            background-color: #fff;
+            margin-left: 30px;
+            padding: 40px 30px;
+        }
+
+        .end_SMILE {
+            width: 100%;
+            height: 400px;
+            background-color: #fff;
+            margin: 30px;
+            border-radius: 20px;
+            margin: 0 10px;
+            background-color: #fff;
+            margin-top: 30px;
+        }
+
+        .block_centerEASY {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .fix {
+            width: 27%;
+            height: 100vh;
+            background-color: #fff;
+            display: flex;
+            padding: 20px;
+        }
+
+        .kolo {
+            position: absolute;
+            width: 208px;
+            height: 208px;
+            left: 771px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            opacity: 0.1;
+            margin-top: -30px;
+            margin-left: 100px;
+        }
+
+        .kolo2 {
+            position: absolute;
+            width: 234px;
+            height: 234px;
+            left: 669px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            opacity: 0.1;
+            margin-top: -130px;
+            margin-left: 100px;
+
+        }
+
+        #secData {
+            width: 1px;
+            height: 1px;
+        }
+
+        .fir_T {
+            width: 30%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 10px;
+
+        }
+
+        .fir_S {
+            width: 70%;
+            height: 100%;
+        }
+
+        .bl_Th-on_TWO {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .numb {
+            font-size: 40px;
+        }
+
+        .spp {
+            font-size: 40px;
+        }
+
+        .fir_act {
+            width: 60%;
+            height: 100%;
+            flex-direction: row;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sec_act {
+            width: 40%;
+            height: 100%;
+        }
+
+        .fir-fir_Act,
+        .sec-fir_Act,
+        .thi-fir_Act {
+            width: 32%;
+            height: 100%;
+            background-color: rgba(112, 218, 255, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1%;
+            border-radius: 100px 100px 0% 0%;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .fir-fir_Act {
+            background-color: rgba(96, 226, 175, 1);
+        }
+
+        .sec-fir_Act {
+            background-color: rgba(255, 140, 119, 1);
+        }
+
+        .bl_act {
+            width: 100%;
+            height: 70%;
+        }
+
+        .foo {
+            width: 100%;
+            height: 30%;
+        }
+
+        .center_block {
+            width: 30%;
+        }
+
+        .insideFir,
+        .insideSec,
+        .insideThi{
+            width: 100%;
+            height: 60%;
+            border-radius: 100px 100px 0% 0%;
+            background-color: rgba(0, 209, 113, 1);
+        }
+        
+        .insideSec{
+            background-color: rgba(255, 104, 77, 1);
+            height: 40%;
+        }
+        
+        .insideThi{
+            background-color: rgba(1, 190, 255, 1);
+            height: 90%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left-side">
+        <div class="fix">
+            <div class="startLeft">
+                <img src="LOGO_Dash.png" alt="">
+                <h2 class="h_leftMain">PELIO</h2>
+            </div>
+            <div class="buts">
+
+                <div class="button" id="button_Dasboard">
+                    <img src="home.png" alt="">
+                    <span>Dashboard</span>
+                </div>
+                <div class="button" id="button_Wallet">
+                    <img src="home.png" alt="">
+                    <span>Wallet</span>
+                </div>
+                <div class="button" id="button_Payment">
+                    <img src="home.png" alt="">
+                    <span>Payment</span>
+                </div>
+                <div class="button" id="button_Invoice">
+                    <img src="home.png" alt="">
+                    <span>Invoice</span>
+                </div>
+                <div class="button" id="button_Setting">
+                    <img src="home.png" alt="">
+                    <span>Setting</span>
+                </div>
+                <div class="button" id="button_Transactions">
+                    <img src="home.png" alt="">
+                    <span>Transactions</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-side">
+        <div class="start_block">
+            <div class="first_startBlock">
+                <div class="blocks">
+                    <div class="up">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                    <div class="down">
+                        <div class="block"></div>
+                        <div class="block"></div>
+                    </div>
+                </div>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="center_block">
+                <input type="text" placeholder="Search Here..." id="search" class="search">
+            </div>
+            <div class="end_block">
+                <img src="noti.png" alt="">
+                <img id="mail" src="mail.png" alt="">
+                <div class="box_Person">
+                    <div class="img_box">
+                        <div class="img_IMG"></div>
+                    </div>
+                    <div class="text">
+                        <div class="name">Anonim</div>
+                        <div class="email">anonim123@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block_centerRight">
+            <div class="blockRight"></div>
+            <div class="blockRight" id="blue"></div>
+            <div class="blockRight" id="yellow"></div>
+            <div class="blockRight" id="red"></div>
+        </div>
+        <div class="block_centerHard">
+            <div class="block_cenHar_one">
+
+            </div>
+            <div class="block_cenHar_two">
+                <canvas id="firstBlock"></canvas>
+            </div>
+        </div>
+        <div class="block_centerHard">
+            <div class="block_cenHar-Three_one">
+                <div class="bl_Th-on_ONE">
+                    <div class="kolo"></div>
+                    <div class="kolo2"></div>
+                </div>
+                <div class="bl_Th-on_TWO">
+                    <div class="fir_T">
+                        <h3 style="color: #72757A">Transactions</h3>
+                        <span class="numb">5491</span>
+                    </div>
+                    <div class="fir_S">
+                        <canvas id="secData"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <div class="block_cenHar-Three_two">
+                <div class="bl_Th-tw">
+                    <div class="foo">
+                        <h2 style="color: #72757A">Activity <br> <span style="color: #000" class="spp">$ 48,284</span></h2>
+                    </div>
+                    <div class="bl_act">
+                        <div class="fir_act">
+                            <div class="fir-fir_Act">
+                                <div class="insideFir"></div>
+                            </div>
+                            <div class="sec-fir_Act">
+                                <div class="insideSec"></div>
+                            </div>
+                            <div class="thi-fir_Act">
+                                <div class="insideThi"></div>
+                            </div>
+                        </div>
+                        <div class="sec_act"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block_centerEASY">
+            <div class="end_SMILE">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        const labels = [
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ''
+        ];
+
+
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Statistics',
+                data: [10, 20, -30, -5, 40, 20, -5, 34, 11, -13, 15],
+                backgroundColor: [
+                    'rgba(255, 104, 77, 1)',
+                    'rgba(255, 104, 77, 1)',
+                    'rgba(10, 80, 255, 10)',
+                    'rgba(14, 110, 255, 1)',
+                    'rgba(0, 209, 113, 1)',
+                    'rgba(255, 104, 77, 1)',
+                    'rgba(14, 110, 255, 1)',
+                    'rgba(255, 104, 77, 1)',
+                    'rgba(255, 104, 77, 1)',
+                    'rgba(14, 110, 255, 1)',
+                    'rgba(255, 104, 77, 1)',
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                ],
+                borderWidth: 0
+            }]
+        };
+
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+            }
+        };
+
+        const firstBlock = new Chart(
+            document.getElementById('firstBlock'),
+            config
+        );
+
+        const labelsSec = [
+            '',
+            '',
+            ''
+        ];
+
+
+
+        const dataSec = {
+            labels: labelsSec,
+            datasets: [{
+                label: '',
+                data: [65, 30, 100],
+                fill: false,
+                borderColor: 'rgba(255, 104, 77, 1)',
+                tension: 0.3,
+                borderWidth: 5
+            }]
+        };
+
+        const configSec = {
+            type: 'line',
+            data: dataSec,
+            options: {
+                plugins: {
+                    legend: {
+                        display: false,
+                    },
+                    tooltip: {
+                        enabled: false,
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            display: false,
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+            }
+        };
+
+        const secData = new Chart(
+            document.getElementById('secData'),
+            configSec
+        );
+
+    </script>
+
+</body>
+
+</html>
